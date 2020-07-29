@@ -21,13 +21,8 @@
             <div class="row">
 
             <?php 
-               $args = array(
-                  'post_type' => 'post',
-                  'posts_per_page' => 6
-               );
-               $query = new WP_Query($args);
-               while($query->have_posts()){
-                  $query->the_post();
+               while(have_posts()){
+                  the_post();
                ?>
                <div class="col-md-4">
                   <div class="single-blog">
@@ -50,18 +45,9 @@
                </div>
             <?php
                }
-               posts_nav_link(' — ',('&laquo; Previous Posts'), ('Next Posts &raquo;'));
+               the_posts_pagination();
                wp_reset_postdata();
             ?>
-            </div>
-            <div class="row">
-               <div class="col-xl-12">
-                  <div class="pagination">
-                     <?php 
-                        
-                     ?>   
-                  </div>
-               </div>
             </div>
          </div>
       </section>

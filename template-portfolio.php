@@ -21,10 +21,15 @@ get_header();
                <div class="col-xl-12">
                   <div class="portfolio-menu mb-40 text-center">
                      <button class="active" data-filter="*">ALL</button>
-                     <button data-filter=".cat1" class="">Business </button>
-                     <button data-filter=".cat2" class="">Finance</button>
-                     <button data-filter=".cat3">Marketing</button>
-                     <button data-filter=".cat4">Idea</button>
+
+                     <?php
+                        $categorys = get_categories();
+                        foreach($categorys as $category){
+                     ?>
+                        <button data-filter=".<?php echo $category->slug;?>" class=""><?php echo $category->name;?> </button>
+                     <?php
+                        }
+                     ?>
                   </div>
                </div>
             </div>

@@ -53,3 +53,66 @@ Tags: Business, Corporate, Responsive
 .single-footer {
 	margin-bottom: 30px;
 }
+
+/* Pagination CSS */
+
+
+.navigation.pagination {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-top: 25px;
+}
+.navigation.pagination h2 {
+  display: none;
+}
+.navigation.pagination a, .page-numbers.current {
+  font-size: 20px;
+  padding: 5px 15px;
+  border: 1px solid #333;
+  display: inline-block;
+}
+.page-numbers.current {
+  background-color: #635CDB;
+  color: #fff;
+}
+
+/* 404 CSS */
+
+.page-404-content {
+  text-align: center;
+}
+.page-404-content h4 {
+  font-size: 32px;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+}
+
+/* Search Widget */
+
+
+#searchform label {
+  display: none;
+}
+#searchform input {
+  position: relative;
+  border: 1px solid #ddd;
+  width: 100%;
+  padding: 5px;
+}
+#searchform input[type="submit"] {
+  position: absolute;
+  right: 0;
+  width: auto;
+  background-color: #635CDB;
+  border: 0;
+  padding: 6px 15px;
+  color: #fff;
+  font-weight: bold;
+  cursor:pointer;
+}
+.page-title {
+	font-size: 35px;
+	margin-bottom: 0;
+}
