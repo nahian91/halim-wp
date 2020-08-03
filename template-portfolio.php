@@ -23,10 +23,10 @@ get_header();
                      <button class="active" data-filter="*">ALL</button>
 
                      <?php
-                        $categorys = get_categories();
-                        foreach($categorys as $category){
+                        $portfolio_menus =  get_terms('portfolio-cat');
+                        foreach ($portfolio_menus as $portfolio_menu){
                      ?>
-                        <button data-filter=".<?php echo $category->slug;?>" class=""><?php echo $category->name;?> </button>
+                        <button data-filter=".<?php echo $portfolio_menu->slug;?>" class=""><?php echo $portfolio_menu->name;?> </button>
                      <?php
                         }
                      ?>
@@ -34,66 +34,43 @@ get_header();
                </div>
             </div>
             <div class="row grid no-gutters">
-               <div class="col-md-4 grid-item cat3 cat2">
+
+            <?php
+               $args = array(
+                  'post_type' => 'portfolio',
+                  'posts_per_page' => 10
+               );
+               $query = new WP_Query($args);
+               while($query->have_posts()){
+                  $query->the_post();
+               ?>
+
+               
+
+               <div class="col-md-4 grid-item 
+                  <?php
+                     $portfolio_items = get_the_terms(get_the_ID(), 'portfolio-cat');
+                     foreach ($portfolio_items as $portfolio_item){
+                        echo $portfolio_item->slug.' ';
+                     }
+                  ?>
+               ">
                   <div class="single-portfolio">
-                     <img src="<?php echo get_template_directory_uri();?>/assets/img/projects/01.jpg" alt="">
+                     <?php the_post_thumbnail();?>
                      <div class="portfolio-hover">
                         <div class="portfolio-content">
-                           <h3><a href="portfolio-single.php" class=""><i class="fa fa-link"></i> project name <span>branding</span></a></h3>
+                           <h3><a href="<?php the_permalink();?>" class=""><i class="fa fa-link"></i> <?php the_title();?> <span><?php echo $portfolio_item->name;?></span></a></h3>
                         </div>
                      </div>
                   </div>
                </div>
-               <div class="col-md-4 grid-item cat2 cat1 cat3">
-                  <div class="single-portfolio">
-                     <img src="<?php echo get_template_directory_uri();?>/assets/img/projects/02.jpg" alt="">
-                     <div class="portfolio-hover">
-                        <div class="portfolio-content">
-                           <h3><a href="portfolio-single.php"><i class="fa fa-link"></i> project name <span>branding</span></a></h3>
-                        </div>
-                     </div>
-                  </div>
-               </div>
-               <div class="col-md-4 grid-item cat2 cat4 cat3" >
-                  <div class="single-portfolio">
-                     <img src="<?php echo get_template_directory_uri();?>/assets/img/projects/03.jpg" alt="">
-                     <div class="portfolio-hover">
-                        <div class="portfolio-content">
-                           <h3><a href="portfolio-single.php"><i class="fa fa-link"></i> project name <span>branding</span></a></h3>
-                        </div>
-                     </div>
-                  </div>
-               </div>
-               <div class="col-md-4 grid-item cat2 cat5 cat1">
-                  <div class="single-portfolio">
-                     <img src="<?php echo get_template_directory_uri();?>/assets/img/projects/04.jpg" alt="">
-                     <div class="portfolio-hover">
-                        <div class="portfolio-content">
-                           <h3><a href="portfolio-single.php"><i class="fa fa-link"></i> project name <span>branding</span></a></h3>
-                        </div>
-                     </div>
-                  </div>
-               </div>
-               <div class="col-md-4 grid-item cat1 cat4 cat5">
-                  <div class="single-portfolio">
-                     <img src="<?php echo get_template_directory_uri();?>/assets/img/projects/05.jpg" alt="">
-                     <div class="portfolio-hover">
-                        <div class="portfolio-content">
-                           <h3><a href="portfolio-single.php"><i class="fa fa-link"></i> project name <span>branding</span></a></h3>
-                        </div>
-                     </div>
-                  </div>
-               </div>
-               <div class="col-md-4 grid-item cat1 cat4 cat3">
-                  <div class="single-portfolio">
-                     <img src="<?php echo get_template_directory_uri();?>/assets/img/projects/06.jpg" alt="">
-                     <div class="portfolio-hover">
-                        <div class="portfolio-content">
-                           <h3><a href="portfolio-single.php"><i class="fa fa-link"></i> project name <span>branding</span></a></h3>
-                        </div>
-                     </div>
-                  </div>
-               </div>
+            <?php
+               }
+               wp_reset_postdata();
+            ?>
+               
+
+
             </div>
          </div>
       </section>
