@@ -1,5 +1,6 @@
 <?php
 
+get_template_part('/inc/halim-options');
 
 function halim_setup_theme(){
     add_theme_support('title-tag');
@@ -17,7 +18,7 @@ function halim_css_js_enqueue(){
     // CSS Load
     wp_enqueue_style('poppins-font', 'https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700');
     wp_enqueue_style('bootstrap-css', get_template_directory_uri().'/assets/css/bootstrap.min.css', array(), '1.0', 'all' );
-    wp_enqueue_style('fontawesome-css', get_template_directory_uri().'/assets/css/font-awesome.min.css', array(), '1.0', 'all' );
+    wp_enqueue_style( 'fa5', 'https://use.fontawesome.com/releases/v5.13.0/css/all.css', array(), '5.13.0', 'all' );
     wp_enqueue_style('magnific-css', get_template_directory_uri().'/assets/css/magnific-popup.css', array(), '1.0', 'all' );
     wp_enqueue_style('owlcarousel-css', get_template_directory_uri().'/assets/css/owl.carousel.css', array(), '1.0', 'all' );
     wp_enqueue_style('main-css', get_template_directory_uri().'/assets/css/style.css', array(), '1.0', 'all' );

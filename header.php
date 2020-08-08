@@ -12,17 +12,38 @@
 				<div class="row">
 					<div class="col-md-6 col-sm-12">
 						<div class="header-left">
-							<a href=""><i class="fa fa-envelope"></i> info@demo.com</a>
-							<a href=""><i class="fa fa-phone"></i> 1234567890</a>
+
+                     <?php
+                        $config = get_option('halim_options');
+                     ?>
+
+                     <?php
+                        if($config['header_email']){
+                        ?>
+                           <a href="mailto:<?php echo $config['header_email'];?>"><i class="fa fa-envelope"></i> <?php echo $config['header_email'];?></a>
+                     <?php
+                        }
+                     ?>
+							
+                     <?php
+                     if($config['header_phone']){
+                     ?>
+                        <a href="tel:<?php echo $config['header_phone'];?>"><i class="fa fa-phone"></i> <?php echo $config['header_phone'];?></a>
+                     <?php
+                        }
+                     ?>
 						</div>
 					</div>
 					<div class="col-md-6 col-sm-12 text-right">
 						<div class="header-social">
-							<a href=""><i class="fa fa-facebook"></i></a>
-							<a href=""><i class="fa fa-twitter"></i></a>
-							<a href=""><i class="fa fa-youtube"></i></a>
-							<a href=""><i class="fa fa-linkedin"></i></a>
-							<a href=""><i class="fa fa-google-plus"></i></a>
+                     <?php
+                        $header_icons = $config['header_icons'];
+                        foreach ($header_icons as $header_icon){
+                     ?>
+                           <a href="<?php echo $header_icon['social_link'];?>"><i class="<?php echo $header_icon['social_icon'];?>"></i></a>
+                     <?php   
+                        }
+                     ?>
 						</div>
 					</div>
 				</div>
@@ -34,7 +55,14 @@
             <div class="row">
                <div class="col-xl-12">
                   <nav class="navbar navbar-expand-md navbar-light">
-                     <a class="navbar-brand" href="#">halim</a>
+
+                  <?php
+                     if($logo = $config['logo'])
+                  ?>
+                     <a href="<?php echo site_url();?>">
+                        <img src="<?php echo $logo['url'];?>" alt="">     
+                     </a>             
+                     
                      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                      <span class="navbar-toggler-icon"></span>
                      </button>
