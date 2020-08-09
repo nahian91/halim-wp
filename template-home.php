@@ -56,42 +56,49 @@ get_header();?>
       <!-- About Area Start -->
       <section class="about-area pt-100 pb-100" id="about">
          <div class="container">
+
+            <?php
+               $config = get_option('halim_options');
+               if($config['about_sec_title']){
+            ?>
             <div class="row section-title">
                <div class="col-md-6 text-right">
-                  <h3><span>who we are?</span> about us</h3>
+                  <h3><span><?php echo $config['about_sec_subtitle'];?></span> <?php echo $config['about_sec_title'];?></h3>
                </div>
                <div class="col-md-6">
-                  <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry typesetting industry.d </p>
+                  <p><?php echo $config['about_sec_des'];?></p>
                </div>
             </div>
+            <?php
+               }
+            ?>
+
+
             <div class="row">
                <div class="col-md-7">
                   <div class="about">
                      <div class="page-title">
-                        <h4>welcome to halim</h4>
+                        <h4><?php echo $config['about_page_title'];?></h4>
                      </div>
-                     <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry typesetting industry </p>
-                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda distinctio maxime laborum delectus aliquam ipsum itaque voluptatem non reiciendis aliquid totam facere, tempora iure iusto adipisci doloremque in, amet, alias nostrum. Explicabo reprehenderit.</p>
-                     <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry typesetting industry </p>
-                     <a href="#" class="box-btn">read more <i class="fa fa-angle-double-right"></i></a>
+                     <p><?php echo $config['about_page_desc'];?></p>
+                     <a href="<?php echo $config['about_page_btn'];?>" class="box-btn">read more <i class="fa fa-angle-double-right"></i></a>
                   </div>
                </div>
                <div class="col-md-5">
+
+               <?php
+                  $about_features = $config['about_page_features'];
+                  foreach($about_features as $about_feature){
+               ?>
                   <div class="single_about">
-                     <i class="fa fa-laptop"></i>
-                     <h4>our mission</h4>
-                     <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry typesetting industry </p>
+                     <i class="<?php echo $about_feature['features_icon'];?>"></i>
+                     <h4><?php echo $about_feature['features_title'];?></h4>
+                     <p><?php echo $about_feature['features_des'];?></p>
                   </div>
-                  <div class="single_about">
-                     <i class="fa fa-user"></i>
-                     <h4>our vission</h4>
-                     <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry typesetting industry </p>
-                  </div>
-                  <div class="single_about">
-                     <i class="fa fa-pencil"></i>
-                     <h4>our history</h4>
-                     <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry typesetting industry </p>
-                  </div>
+               <?php
+                  }
+               ?>
+                  
                </div>
             </div>
          </div>
