@@ -88,7 +88,9 @@ get_header();?>
 
                <?php
                   $about_features = $config['about_page_features'];
-                  foreach($about_features as $about_feature){
+
+                  if($about_features){
+                     foreach($about_features as $about_feature){
                ?>
                   <div class="single_about">
                      <i class="<?php echo $about_feature['features_icon'];?>"></i>
@@ -96,6 +98,7 @@ get_header();?>
                      <p><?php echo $about_feature['features_des'];?></p>
                   </div>
                <?php
+                     }
                   }
                ?>
                   
@@ -114,48 +117,34 @@ get_header();?>
                         <h4>faq</h4>
                      </div>
                      <div class="accordion" id="accordionExample">
+
+                     <?php
+                        $about_accordions = $config['about_faq_list'];
+                        if($about_accordions){
+                           $i = 0;
+                           foreach($about_accordions as $about_accordion){
+                           $i++;
+                     ?>
                         <div class="card">
-                           <div class="card-header" id="headingOne">
+                           <div class="card-header" id="heading-<?php echo $i;?>">
                               <h5 class="mb-0">
-                                 <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                 Lorem Ipsum is simply 
+                                 <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapse-<?php echo $i;?>" aria-expanded="true" aria-controls="collapse-<?php echo $i;?>">
+                                    <?php echo $about_accordion['faq_title'];?> 
                                  </button>
                               </h5>
                            </div>
-                           <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+                           <div id="collapse-<?php echo $i;?>" class="collapse <?php if($i == 1){echo 'show';}?>" aria-labelledby="heading<?php echo $i;?>" data-parent="#accordionExample">
                               <div class="card-body">
-                                 Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et.
+                                 <?php echo $about_accordion['faq_des'];?> 
                               </div>
                            </div>
                         </div>
-                        <div class="card">
-                           <div class="card-header" id="headingTwo">
-                              <h5 class="mb-0">
-                                 <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                 Lorem Ipsum is simply
-                                 </button>
-                              </h5>
-                           </div>
-                           <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
-                              <div class="card-body">
-                                 Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et.
-                              </div>
-                           </div>
-                        </div>
-                        <div class="card">
-                           <div class="card-header" id="headingThree">
-                              <h5 class="mb-0">
-                                 <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                 Lorem Ipsum is simply
-                                 </button>
-                              </h5>
-                           </div>
-                           <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
-                              <div class="card-body">
-                                 Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et.
-                              </div>
-                           </div>
-                        </div>
+                     <?php
+                        }
+                     }
+                     ?>
+
+
                      </div>
                   </div>
                </div>
@@ -164,22 +153,22 @@ get_header();?>
                      <div class="page-title">
                         <h4>our skills</h4>
                      </div>
+
+                  <?php
+                     $about_skills = $config['about_skills_list'];
+                     if($about_skills){
+                        foreach($about_skills as $about_skill){
+                     ?>
+                     
                      <div class="single-skill">
-                        <h4>html</h4>
-                        <div class="progress-bar" role="progressbar" style="width: 90%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">90%</div>
+                        <h4><?php echo $about_skill['skill_title'];?></h4>
+                        <div class="progress-bar" role="progressbar" style="width: <?php echo $about_skill['skill_number'];?>%;" aria-valuenow="<?php echo $about_skill['skill_number'];?>" aria-valuemin="0" aria-valuemax="100"><?php echo $about_skill['skill_number'];?>%</div>
                      </div>
-                     <div class="single-skill">
-                        <h4>css</h4>
-                        <div class="progress-bar" role="progressbar" style="width: 74%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">74%</div>
-                     </div>
-                     <div class="single-skill">
-                        <h4>photoshop</h4>
-                        <div class="progress-bar" role="progressbar" style="width: 94%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">94%</div>
-                     </div>
-                     <div class="single-skill">
-                        <h4>wordpress</h4>
-                        <div class="progress-bar" role="progressbar" style="width: 85%;" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100">85%</div>
-                     </div>
+                  <?php
+                        }
+                     }
+                  ?>
+
                   </div>
                </div>
             </div>
@@ -229,30 +218,30 @@ get_header();?>
       </section>
       <!-- Services Area End -->
       
+      <?php
+         $counters = $config['counter_lists'];
+         if($counters){
+      ?>
       <!-- Counter Area End -->
       <section class="counter-area">
          <div class="container-fluid">
             <div class="row">
+
+            <?php
+               
+               foreach($counters as $counter)
+               {
+            ?>
                <div class="col-md-3">
                   <div class="single-counter">
-                     <h4><i class="fa fa-user"></i><span class="counter">567</span>customers</span></h4>
+                     <h4><i class="<?php echo $counter['counter_icon'];?>"></i><span class="counter"><?php echo $counter['counter_number'];?></span><?php echo $counter['counter_title'];?></h4>
                   </div>
                </div>
-               <div class="col-md-3">
-                  <div class="single-counter">
-                     <h4><i class="fa fa-code"></i><span class="counter">236</span>line of codes</h4>
-                  </div>
-               </div>
-               <div class="col-md-3">
-                  <div class="single-counter">
-                     <h4><i class="fa fa-file"></i><span class="counter">789</span>users</h4>
-                  </div>
-               </div>
-               <div class="col-md-3">
-                  <div class="single-counter">
-                     <h4><i class="fa fa-coffee"></i><span class="counter">1,395</span>cup of coffees</h4>
-                  </div>
-               </div>
+            <?php
+               }
+            }
+            ?>
+
             </div>
          </div>
       </section>

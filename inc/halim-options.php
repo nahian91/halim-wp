@@ -25,9 +25,16 @@ if(class_exists('CSF')){
         'icon' => 'fas fa-arrow-right',
         'fields' => array(
             array(
+                'id' => 'header_email_enable',
+                'type' => 'switcher',
+                'default' => false,
+                'title' => __('Email Address Enable?', 'halim')
+            ),
+            array(
                 'id' => 'header_email',
                 'type' => 'text',
-                'title' => __('Email Address', 'halim')
+                'title' => __('Email Address', 'halim'),
+                'dependency' => array( 'header_email_enable', '==', 'true' )
             ),
             array(
                 'id' => 'header_phone',
@@ -168,4 +175,88 @@ if(class_exists('CSF')){
             )
         )
     ));
+
+    CSF::createSection($prefix, array(
+        'parent' => 'about_options',
+        'title' => __('About FAQ', 'halim'),
+        'fields' => array(
+            array(
+                'id' => 'about_faq_list',
+                'title' => __('About Faq', 'halim'),
+                'type' => 'group',
+                'button_title' => __('Add New FAQ', 'halim'),
+                'fields' => array(
+                    array(
+                        'id' => 'faq_title',
+                        'title' => __('Faq Title', 'halim'),
+                        'type' => 'text'
+                    ),
+                    array(
+                        'id' => 'faq_des',
+                        'title' => __('Faq Description', 'halim'),
+                        'type' => 'textarea'
+                    )
+                )
+            )
+        )
+    ));
+
+    CSF::createSection($prefix, array(
+        'parent' => 'about_options',
+        'title' => __('About Skills', 'halim'),
+        'fields' => array(
+            array(
+                'id' => 'about_skills_list',
+                'title' => __('About Skills', 'halim'),
+                'type' => 'group',
+                'button_title' => __('Add New Skill', 'halim'),
+                'fields' => array(
+                    array(
+                        'id' => 'skill_title',
+                        'title' => __('Skill Title', 'halim'),
+                        'type' => 'text'
+                    ),
+                    array(
+                        'id' => 'skill_number',
+                        'title' => __('Skill Number', 'halim'),
+                        'type' => 'text'
+                    )
+                )
+            )
+        )
+    ));
+
+    // Counter Options
+
+    CSF::createSection($prefix, array(
+        'id' => 'counter_options',
+        'title' => __('Counter Options'),
+        'icon' => 'fas fa-rocket',
+        'fields' => array(
+            array(
+                'id' => 'counter_lists',
+                'title' => __('Counter Lists'),
+                'type' => 'group',
+                'button_title' => __('Add New Counter'),
+                'fields' => array(
+                    array(
+                        'id' => 'counter_title',
+                        'type' => 'text',
+                        'title' => __('Counter Title')
+                    ),
+                    array(
+                        'id' => 'counter_number',
+                        'type' => 'number',
+                        'title' => __('Counter Number')
+                    ),
+                    array(
+                        'id' => 'counter_icon',
+                        'type' => 'icon',
+                        'title' => __('Counter Icon')
+                    ),
+                )
+            )
+        )
+    ));
+
 }
