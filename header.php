@@ -2,6 +2,11 @@
 <html lang="en">
    <head>
       <meta charset="utf-8">
+      <?php
+         $config = get_option('halim_options');
+         $favicon = $config['favicon']
+      ?>
+      <link rel="icon" href="<?php echo $favicon['url'];?>" type="image/jpg">
       <meta http-equiv="X-UA-Compatible" content="IE=edge">
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <?php wp_head();?>
@@ -12,10 +17,6 @@
 				<div class="row">
 					<div class="col-md-6 col-sm-12">
 						<div class="header-left">
-
-                     <?php
-                        $config = get_option('halim_options');
-                     ?>
 
                      <?php
                         if($config['header_email']){

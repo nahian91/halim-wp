@@ -85,6 +85,11 @@ if(class_exists('CSF')){
                 'id' => 'logo',
                 'type' => 'media',
                 'title' => __('Upload Logo', 'halim')
+            ),
+            array(
+                'id' => 'favicon',
+                'type' => 'media',
+                'title' => __('Upload Favicon', 'halim')
             )
         )
     ));
@@ -255,6 +260,139 @@ if(class_exists('CSF')){
                         'title' => __('Counter Icon')
                     ),
                 )
+            )
+        )
+    ));
+
+    // CTA Options
+
+    CSF::createSection($prefix, array(
+        'id' => 'cta_options',
+        'title' => __('CTA Options'),
+        'icon' => 'fas fa-bullhorn',
+        'fields' => array(
+            array(
+                'id' => 'cta_switch',
+                'type' => 'switcher',
+                'title' => __('Show CTA?', 'halim'),
+                'default' => true
+            ),
+            array(
+                'id' => 'cta_title',
+                'type'=> 'text',
+                'title' => __('CTA Title', 'halim'),
+                'default' => __('best solution for your business', 'halim'),
+                'help' => __('Write CTA Title Here', 'halim'),
+                'dependency' => array('cta_switch', '==', 'true')
+            ),
+            array(
+                'id' => 'cta_subtitle',
+                'type'=> 'textarea',
+                'title' => __('CTA SubTitle', 'halim'),
+                'default' => __('the can be used on larger scale projectss as well as small scale projectss', 'halim'),
+                'dependency' => array('cta_switch', '==', 'true')
+            ),
+            array(
+                'id' => 'cta_btn_txt',
+                'type'=> 'text',
+                'title' => __('CTA Button Text', 'halim'),
+                'default' => __('contact us', 'halim'),
+                'dependency' => array('cta_switch', '==', 'true')
+            ),
+            array(
+                'id' => 'cta_btn_url',
+                'type'=> 'text',
+                'title' => __('CTA Button Url', 'halim'),
+                'default' => 'https://www.google.com',
+                'dependency' => array('cta_switch', '==', 'true')
+            )
+        )
+    ));
+
+    // Contact Options
+    CSF::createSection($prefix, array(
+        'id' => 'contact_options',
+        'title' => __('Contact Options', 'halim'),
+        'icon' => 'fas fa-bullhorn',
+        'fields' => array(
+            array(
+                'id' => 'contact_info',
+                'title' => __('Contact Info', 'halim'),
+                'type' => 'group',
+                'button_title' => __('Add New Concatc Items', 'halim'),
+                'fields' => array(
+                    array(
+                        'id' => 'contact_info_title',
+                        'type' => 'text',
+                        'title' => __('Contact Info Title', 'halim')
+                    ),
+                    array(
+                        'id' => 'contact_info_icon',
+                        'type' => 'icon',
+                        'title' => __('Contact Info Icon', 'halim')
+                    ),
+                    array(
+                        'id' => 'contact_info_des',
+                        'type' => 'text',
+                        'title' => __('Contact Info Description', 'halim')
+                    )
+                )
+            ),
+            array(
+                'id' => 'contact_map',
+                'type' => 'map',
+                'title' => __('Contact Map', 'halim')
+            )
+
+        )
+    ));
+
+
+    // Footer Options
+    CSF::createSection($prefix, array(
+        'id' => 'footer_options',
+        'title' => __('Footer Options', 'halim'),
+        'icon' => 'fas fa-rocket',
+        'fields' => array(
+            array(
+                'id' => 'footer_text',
+                'type' => 'text',
+                'title' => __('Copyright Text' , 'halim'),
+                'default' => __('&copy; All Rights Reserved 2020' ,'halim')
+            ),
+            array(
+                'id' => 'footer_social',
+                'type' => 'group',
+                'title' => __('Footer Social Links', 'halim'),
+                'button_title' => __('Add New Link', 'halim'),
+                'fields' => array(
+                    array(
+                        'id' => 'footer_social_title',
+                        'type' => 'text',
+                        'title' => __('Footer Link Title', 'halim')
+                    ),
+                    array(
+                        'id' => 'footer_social_icon',
+                        'type' => 'icon',
+                        'title' => __('Footer Link Icon', 'halim')
+                    ),
+                    array(
+                        'id' => 'footer_social_url',
+                        'type' => 'text',
+                        'title' => __('Footer Link URL', 'halim')
+                    )
+                )
+            ),
+            array(
+                'id' => 'footer_link_target',
+                'type' => 'select',
+                'title' => __('Select Link Target', 'halim'),
+                'options' => array(
+                    '_self' => __('Open in Same Tab', 'halim',),
+                    '_blank' => __('Open in New Tab', 'halim',),
+                    '_window' => __('Open in New Window', 'halim',)
+                ),
+                'default' => '_blank'
             )
         )
     ));

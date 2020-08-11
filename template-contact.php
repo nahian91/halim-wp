@@ -15,31 +15,33 @@ get_header();
     </div>
 </section>
 
+<?php
+   $config = get_option('halim_options');
+?>
+
 <!-- Contact Us Area End -->
 <section class="contact-area pb-100 pt-100" id="contact">
          <div class="container">
             <div class="row">
                <div class="col-md-10 mx-auto">
                   <div class="row text-center">
+
+                  <?php
+                     $contact_items = $config['contact_info'];
+                     if($contact_items){
+                        foreach($contact_items as $contact_item){
+                  ?>
                      <div class="col-md-4">
                         <div class="contact-address">
-                           <i class="fa fa-map-marker"></i>
-                           <h4>address <span>123, michighan, usa</span></h4>
+                           <i class="<?php echo $contact_item['contact_info_icon'];?>"></i>
+                           <h4><?php echo $contact_item['contact_info_title'];?> <span><?php echo $contact_item['contact_info_des'];?></span></h4>
                         </div>
                      </div>
-                     <div class="col-md-4">
-                        <div class="contact-address">
-                           <i class="fa fa-phone"></i>
-                           <h4>phone <span>11223344</span></h4>
-                        </div>
-                     </div>
-                     <div class="col-md-4">
-                        <div class="contact-address">
-                           <i class="fa fa-envelope"></i>
-                           <h4>email <span>info@demo.com</span></h4>
-                        </div>
-                     </div>
-                  </div>
+                  <?php
+                        }
+                     }
+                  ?>
+
                   <div class="row">
                      <div class="col-md-7">
                         <div class="contact-form">
@@ -47,8 +49,11 @@ get_header();
                         </div>
                      </div>
                      <div class="col-md-5">
+                        <?php
+                           $google_map = $config['contact_map'];
+                        ?>
                         <div class="google-map">
-                           <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5785846.583418618!2d-90.75907970166762!3d44.9208869696666!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4d4caa3dc7ca0411%3A0x97dd48597a62c9b3!2sMichigan%2C+USA!5e0!3m2!1sen!2sbd!4v1540614431885"></iframe>
+                           <iframe src="https://maps.google.com/maps?q=<?php echo $google_map['latitude'];?>, <?php echo $google_map['longitude'];?>&z=15&output=embed"></iframe>
                         </div>
                      </div>
                   </div>
