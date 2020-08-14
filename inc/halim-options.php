@@ -25,16 +25,9 @@ if(class_exists('CSF')){
         'icon' => 'fas fa-arrow-right',
         'fields' => array(
             array(
-                'id' => 'header_email_enable',
-                'type' => 'switcher',
-                'default' => false,
-                'title' => __('Email Address Enable?', 'halim')
-            ),
-            array(
                 'id' => 'header_email',
                 'type' => 'text',
-                'title' => __('Email Address', 'halim'),
-                'dependency' => array( 'header_email_enable', '==', 'true' )
+                'title' => __('Email Address', 'halim')
             ),
             array(
                 'id' => 'header_phone',
@@ -90,6 +83,38 @@ if(class_exists('CSF')){
                 'id' => 'favicon',
                 'type' => 'media',
                 'title' => __('Upload Favicon', 'halim')
+            )
+        )
+    ));
+
+    CSF::createSection($prefix, array(
+        'parent' => 'header_options',
+        'icon' => 'fas fa-arrow-right',
+        'title' => __('Header Styleing', 'halim'),
+        'fields' => array(
+            array(
+                'id' => 'header_background',
+                'type' => 'background',
+                'title' => __('Header Background Color / Image', 'halim'),
+                'output' => array('.header-top')
+            ),
+            array(
+                'id' => 'header_color',
+                'type' => 'color',
+                'title' => __('Header Color', 'halim'),
+                'output' => array('.header-top a')
+            ),
+            array(
+                'id' => 'header_typography',
+                'type' => 'typography',
+                'title' => __('Header Typography', 'halim'),
+                'output' => array('.header-top a')
+            ),
+            array(
+                'id' => 'header__link_hover',
+                'type' => 'color',
+                'title' => __('Header Link Hover', 'halim'),
+                'output' => array('.header-top a:hover')
             )
         )
     ));

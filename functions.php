@@ -204,3 +204,5 @@ function halim_comment_filed( $fields ) {
     return $fields;
 }
 add_filter( 'comment_form_fields', 'halim_comment_filed' );
+
+require_once get_template_directory().'/inc/halim-activation.php';
